@@ -23,9 +23,9 @@ const ProductPage = () => {
 
   console.log("Products :", products);
   return (
-    <Grid columns={3} style={{marginTop:25 , marginRight: 200, marginLeft: 200}}>
+    <div class="ui grid container" style={{marginTop:25 , marginRight: 200, marginLeft: 200}}>
       <ProductComponent />
-    </Grid>
+    </div>
   );
 };
 

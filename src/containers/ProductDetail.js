@@ -27,32 +27,32 @@ const ProductDetails = () => {
     };
   }, [productId]);
   return (
-    <div className="ui grid container">
+    <div className="ui grid container" >
       {Object.keys(product).length === 0 ? (
-        <div>...Loading</div>
+        <div style={{marginBottom:'300 !important', marginRight:'auto', marginLeft:"auto" }} >...Loading</div>
       ) : (
         <div className="ui placeholder segment">
-          <div className="ui two column stackable center aligned grid">
-            <div className="ui vertical divider">AND</div>
-            <div className="middle aligned row">
-              <div className="column lp">
-                <img className="ui fluid image" src={image} />
-              </div>
-              <div className="column rp">
-                <h1>{title}</h1>
-                <h2>
-                  <a className="ui teal tag label">${price}</a>
-                </h2>
-                <h3 className="ui brown block header">{category}</h3>
-                <p>{description}</p>
-                <div className="ui vertical animated button" tabIndex="0">
-                  <div className="hidden content">
-                    <i className="shop icon"></i>
-                  </div>
-                  <div className="visible content">Add to Cart</div>
+          <div className="ui one column center aligned grid">
+
+            <div style={{ marginTop:30 }} className="column">
+              <img style={{ marginLeft:'38%', width: 270, maxHeight: 320, minHeight: 200 }} className="ui fluid image" src={image} />
+            </div>
+
+            <div className="column">
+              <h1>{title}</h1>
+              <h2>
+                <a className="ui teal tag label">${price}</a>
+              </h2>
+              <h3 style={{ color: "brown" }}>{category}</h3>
+              <p style={{ width: "50%" , marginRight:'auto', marginLeft:"auto" }}>{description}</p>
+              <div class="ui vertical animated ui green basic button" tabindex="0">
+                <div class="hidden content">Add to Card</div>
+                <div class="visible content">
+                  <i class="shop icon"></i>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       )}
