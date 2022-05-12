@@ -18,3 +18,10 @@ export const removeSelectedProduct = () => {
     type: ActionTypes.REMOVE_SELECTED_PRODUCT,
   };
 };
+
+export const setCategoryProducts = (product) => {
+  return {
+    type: ActionTypes.SET_CATEGORY_PRODUCTS,
+    payload: product,
+  };
+};
