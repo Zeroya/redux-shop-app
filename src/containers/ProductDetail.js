@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -45,10 +46,25 @@ const ProductDetails = () => {
               </h2>
               <h3 style={{ color: "brown" }}>{category}</h3>
               <p style={{ width: "50%", marginRight: 'auto', marginLeft: "auto" }}>{description}</p>
-              <div class="ui vertical animated ui green basic button" tabindex="0">
-                <div class="hidden content">Add to Card</div>
-                <div class="visible content">
-                  <i class="shop icon"></i>
+
+              <div className="ui four column centered grid">
+                <div class="four column centered row">
+                  
+                  <Link to="/" style={{maxWidth:"12rem", marginLeft:"5em"}} class="column">
+                    <div class=" ui vertical animated ui green basic button" tabindex="0">
+                      <div class="hidden content">Add to Card</div>
+                      <div class="visible content">
+                        <i class="shop icon"></i>
+                      </div>
+                    </div>
+                  </Link>
+
+                  <Link to="/" style={{marginLeft:"-12vh"}} class="column">
+                    <div >
+                    <button class="ui blue button">Go to Card</button>
+                    </div>
+                  </Link>
+
                 </div>
               </div>
             </div>
