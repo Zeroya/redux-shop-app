@@ -7,6 +7,7 @@ import Category from './containers/Category';
 import Contact from './containers/Contact';
 import FalsePage from './containers/FalsePage';
 import BreadCrumb from './containers/BreadCrumb';
+import Cards from './containers/Cards';
 import "./App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/product/:productId" element={<ProductDetail />} />
           <Route path="/category/:categoryId" element={<><BreadCrumb/><ButtonsMenu /><Category /></>} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/cards" element={<Cards/>} />
           <Route path="/404" element={<FalsePage />} />
           <Route>404 not found</Route>
         </Routes>

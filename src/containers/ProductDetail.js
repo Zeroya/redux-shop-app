@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectedProduct,
   removeSelectedProduct,
+  addToCard
 } from "../redux/actions/productsActions";
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -27,6 +28,11 @@ const ProductDetails = () => {
       dispatch(removeSelectedProduct());
     };
   }, [productId]);
+
+  const addCard = (product) => {
+    dispatch(addToCard(product))
+  }
+
   return (
     <div className="ui grid container" >
       {Object.keys(product).length === 0 ? (
@@ -49,19 +55,19 @@ const ProductDetails = () => {
 
               <div className="ui four column centered grid">
                 <div class="four column centered row">
-                  
-                  <Link to="/" style={{maxWidth:"12rem", marginLeft:"5em"}} class="column">
+
+                  <div onClick={() => addCard(product)} to="/" style={{ maxWidth: "12rem", marginLeft: "5em" }} class="column">
                     <div class=" ui vertical animated ui green basic button" tabindex="0">
                       <div class="hidden content">Add to Card</div>
                       <div class="visible content">
                         <i class="shop icon"></i>
                       </div>
                     </div>
-                  </Link>
+                  </div>
 
-                  <Link to="/" style={{marginLeft:"-12vh"}} class="column">
+                  <Link to="/cards" style={{ marginLeft: "-12vh" }} class="column">
                     <div >
-                    <button class="ui blue button">Go to Card</button>
+                      <button class="ui blue button">Go to Card</button>
                     </div>
                   </Link>
 

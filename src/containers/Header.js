@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Header } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Headera = () => {
+
+const cardNumber = useSelector((state) => state.handleCard)
 
   const [color, setColor] = useState('black');
   const [color1, setColorProd] = useState('black');
@@ -53,9 +56,9 @@ const Headera = () => {
           <div class="ui green button">Sign Up</div>
         </div>
 
-        <div style={{ marginLeft: 50, marginRight: 130 }} class="item">
-          <div  class="ui button">Card (0)</div>
-        </div>
+        <Link to="/cards" style={{ marginLeft: 50, marginRight: 130 }} class="item">
+          <div  class="ui button">Card ({cardNumber.length})</div>
+        </Link>
 
       </div>
 

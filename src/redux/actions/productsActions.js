@@ -25,3 +25,17 @@ export const setCategoryProducts = (product) => {
     payload: product,
   };
 };
+
+export const addToCard = (product) => {
+  return {
+    type: ActionTypes.ADD_ITEM,
+    payload: product,
+  };
+};
+
+export const deleteFromCard = (product) => {
+  return {
+    type: ActionTypes.DELETE_ITEM,
+    payload: product,
+  };
+};
