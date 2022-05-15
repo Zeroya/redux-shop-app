@@ -2,15 +2,25 @@ import React, { useState } from "react";
 import { Header } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Headera = () => {
 
-const cardNumber = useSelector((state) => state.handleCard)
+  const cardNumber = useSelector((state) => state.handleCard)
+  const navigate = useNavigate();
+  const [input, setInput] = useState('');
+
 
   const [color, setColor] = useState('black');
   const [color1, setColorProd] = useState('black');
   const [color2, setColorAbout] = useState('black');
   const [color3, setColorContact] = useState('black');
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    navigate('/searched/' + input);
+    setInput('');
+  }
 
 
   return (
@@ -33,7 +43,7 @@ const cardNumber = useSelector((state) => state.handleCard)
           <Link to="/" className="item" style={{ color: color1 }} onClick={() => color1 === "black" ? setColorProd("teal") || setColor("black") || setColorAbout("black") || setColorContact("black") : color1 === "teal" ? setColorProd("black") : setColorProd("blue")}>
             Products
           </Link>
-          <Link to="/" className="item" style={{ color: color2 }} onClick={() => color2 === "black" ? setColorAbout("teal") || setColor("black") || setColorProd("black") || setColorContact("black") : color2 === "teal" ? setColorAbout("black") : setColorAbout("blue")}>
+          <Link to="/about" className="item" style={{ color: color2 }} onClick={() => color2 === "black" ? setColorAbout("teal") || setColor("black") || setColorProd("black") || setColorContact("black") : color2 === "teal" ? setColorAbout("black") : setColorAbout("blue")}>
             About
           </Link>
           <Link to="/contact" className="item" style={{ color: color3 }} onClick={() => color3 === "black" ? setColorContact("teal") || setColor("black") || setColorProd("black") || setColorAbout("black") : color3 === "teal" ? setColorContact("black") : setColorContact("blue")}>
@@ -41,12 +51,14 @@ const cardNumber = useSelector((state) => state.handleCard)
           </Link>
         </div>
 
-        <div class="item">
-          <div style={{ marginRight: 60 }} class="ui icon input">
-            <input class="teal " type="text" placeholder="Search..." />
-            <i class="search teal link icon"></i>
+        <form onSubmit={submitHandler}>
+          <div class="item">
+            <div style={{ marginRight: 60 }} class="ui icon input">
+              <input class="teal " type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Search..." />
+              <i class="search teal link icon"></i>
+            </div>
           </div>
-        </div>
+        </form>
 
         <div class="item">
           <div class="ui primary button">Sign In</div>
@@ -57,7 +69,7 @@ const cardNumber = useSelector((state) => state.handleCard)
         </div>
 
         <Link to="/cards" style={{ marginLeft: 50, marginRight: 130 }} class="item">
-          <div  class="ui button">Card ({cardNumber.length})</div>
+          <div class="ui button">Card ({cardNumber.length})</div>
         </Link>
 
       </div>

@@ -4,14 +4,28 @@ const intialState = {
   products: [],
 };
 
+const SortState = {
+  products: [],
+};
+
 const categoryState = {
   category: [],
 };
 
+const card = localStorage.getItem("cards") ? JSON.parse(localStorage.getItem("cards")) : [];
 
 export const productsReducer = (state = intialState, { type, payload }) => {
   switch (type) {
     case ActionTypes.SET_PRODUCTS:
+      return { ...state, products: payload };
+    default:
+      return state;
+  }
+};
+
+export const sortReducer = (state = SortState, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.SORT_PRODUCTS:
       return { ...state, products: payload };
     default:
       return state;
@@ -39,8 +53,9 @@ export const categoryReducer = (state = categoryState, { type, payload }) => {
 };
 
 
-export const handleCard = (state = [], action) => {
+export const handleCard = (state = card, action) => {
   const product = action.payload;
+  localStorage.setItem("cards", JSON.stringify(state));
   switch (action.type) {
     case ActionTypes.ADD_ITEM:
       const exist = state.find((x) => x.id === product.id);
@@ -61,4 +76,5 @@ export const handleCard = (state = [], action) => {
     default:
       return state;
   }
-}
+
+};

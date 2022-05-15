@@ -8,7 +8,7 @@ const Cards = () => {
   const dispatch = useDispatch();
 
   const addCard = (product) => {
-    dispatch(addToCard(product))
+    dispatch(addToCard(product));
   }
 
   const removeCard = (product) => {

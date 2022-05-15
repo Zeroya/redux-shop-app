@@ -39,3 +39,10 @@ export const deleteFromCard = (product) => {
     payload: product,
   };
 };
+
+export const sortProducts = (product) => {
+  return {
+    type: ActionTypes.SORT_PRODUCTS,
+    payload: product,
+  };
+};
